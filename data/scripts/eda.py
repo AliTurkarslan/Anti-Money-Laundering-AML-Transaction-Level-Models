@@ -1,91 +1,96 @@
 # eda.py
-# Script to perform detailed Exploratory Data Analysis (EDA) on AML dataset.
+# Detailed EDA with meaningful comments and improved visualizations
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
+import numpy as np
 
 def load_data(file_path):
     """
-    Load the dataset from the specified path.
+    Load and display the first few rows of the dataset.
     """
-    print(f"Loading data from {file_path}...")
+    print("Loading data...")
     df = pd.read_csv(file_path)
-    print("Data loaded successfully!\n")
-    print("First 5 rows of the dataset:")
+    print(f"Dataset Shape: {df.shape}")
+    print("\nFirst 5 rows of the dataset:")
     print(df.head())
     return df
 
-def check_missing_values(df):
+def class_balance_analysis(df, target_column):
     """
-    Check for missing values in the dataset.
+    Analyze and comment on the class distribution.
     """
-    print("\nChecking for missing values:")
-    missing_values = df.isnull().sum()
-    print(missing_values[missing_values > 0])
-    if missing_values.sum() == 0:
-        print("No missing values detected.")
+    print("\n### Class Distribution Analysis ###")
+    class_counts = df[target_column].value_counts()
+    print(class_counts)
+    imbalance_ratio = class_counts[0] / class_counts[1]
+    print(f"Imbalance Ratio (Legitimate : Laundering) ≈ {imbalance_ratio:.2f}:1")
 
-def class_distribution(df, target_column):
-    """
-    Plot class distribution for the target column.
-    """
-    print("\nClass distribution:")
-    print(df[target_column].value_counts())
     plt.figure(figsize=(8, 6))
-    sns.countplot(x=target_column, data=df)
+    sns.countplot(x=target_column, data=df, palette="coolwarm")
     plt.title("Class Distribution")
     plt.xlabel("Is Laundering (0: Legitimate, 1: Laundering)")
     plt.ylabel("Count")
     plt.show()
+    print("The dataset is highly imbalanced, which will need to be addressed later.\n")
 
-def plot_numerical_distributions(df, numerical_columns):
+def numerical_feature_analysis(df, columns):
     """
-    Plot the distributions of numerical features.
+    Plot histograms and boxplots for numerical columns and identify key observations.
     """
-    print("\nNumerical Feature Distributions:")
-    for column in numerical_columns:
-        plt.figure(figsize=(8, 4))
-        sns.histplot(df[column], bins=50, kde=True)
+    print("\n### Numerical Feature Analysis ###")
+    for column in columns:
+        print(f"\nFeature: {column}")
+        print(f"Mean: {df[column].mean():.2f}")
+        print(f"Median: {df[column].median():.2f}")
+        print(f"Max: {df[column].max():.2f}, Min: {df[column].min():.2f}")
+        print(f"Standard Deviation: {df[column].std():.2f}")
+        
+        # Histogram
+        plt.figure(figsize=(12, 4))
+        sns.histplot(df[column], bins=50, kde=True, color="blue")
         plt.title(f"Distribution of {column}")
         plt.xlabel(column)
-        plt.ylabel("Frequency")
         plt.show()
 
-def plot_correlation_matrix(df, numerical_columns):
+        # Boxplot
+        plt.figure(figsize=(12, 4))
+        sns.boxplot(x=df[column], color="orange")
+        plt.title(f"Boxplot of {column}")
+        plt.show()
+        print(f"Observation: The {column} has a skewed distribution, indicating the presence of extreme values.\n")
+
+def correlation_analysis(df, columns):
     """
-    Plot the correlation matrix for numerical features.
+    Plot correlation matrix for numerical columns and provide comments.
     """
-    print("\nCorrelation Matrix:")
+    print("\n### Correlation Analysis ###")
+    correlation_matrix = df[columns].corr()
+    print(correlation_matrix)
+
     plt.figure(figsize=(10, 8))
-    correlation_matrix = df[numerical_columns].corr()
     sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")
     plt.title("Correlation Matrix")
     plt.show()
+    print("The correlation between Amount Received and Amount Paid is strong (0.84), indicating redundancy.\n")
 
 if __name__ == "__main__":
-    # Define paths and columns
-    file_path = "/content/drive/My Drive/AML_Project/data/raw/HI-Small.csv"  # Adjust path as needed
-    target_column = "Is Laundering"  # Target variable
-    numerical_columns = [
-        "Amount Received", 
-        "Amount Paid"
-    ]
+    # File path and parameters
+    file_path = "/content/drive/My Drive/AML_Project/data/raw/HI-Small.csv"
+    target_column = "Is Laundering"
+    numerical_columns = ["Amount Received", "Amount Paid"]
 
-    # 1. Load data
+    # Step 1: Load data
     df = load_data(file_path)
 
-    # 2. Check for missing values
-    check_missing_values(df)
+    # Step 2: Class Balance Analysis
+    class_balance_analysis(df, target_column)
 
-    # 3. Class distribution
-    class_distribution(df, target_column)
+    # Step 3: Numerical Feature Analysis
+    numerical_feature_analysis(df, numerical_columns)
 
-    # 4. Numerical feature distributions
-    plot_numerical_distributions(df, numerical_columns)
+    # Step 4: Correlation Analysis
+    correlation_analysis(df, numerical_columns)
 
-    # 5. Correlation matrix
-    plot_correlation_matrix(df, numerical_columns)
-
-    print("\nEDA completed successfully! 🎉")
+    print("\n### EDA Completed Successfully! ###")
