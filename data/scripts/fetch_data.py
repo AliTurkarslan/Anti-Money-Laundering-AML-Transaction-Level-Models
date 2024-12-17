@@ -3,14 +3,15 @@
 
 import gdown
 import os
+
 def download_dataset():
     """
-    Downloads the Hi-small dataset from Google Drive and saves it in the current directory.
+    Downloads the HI-Small dataset and saves it in the data/raw directory.
     """
     # Google Drive file ID
     file_id = "11AUdaB39YdQhw5dXf4_zy7rNT8lT571m"
-    # Output file path in Colab root
-    output_path = "/content/Hi-small.csv"
+    project_path = "/content/drive/My Drive/AML_Project"
+    output_path = os.path.join(project_path, "data/raw/HI-Small.csv")
 
     # Check if the file already exists
     if not os.path.exists(output_path):
