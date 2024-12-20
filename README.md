@@ -14,18 +14,21 @@ This project focuses on developing transaction-level models for anti-money laund
 - Niedre Vija
 - Jolanta Krastina
 
-## Project Structure
-- `data/`: Contains datasets for analysis.
-- `notebooks/`: Jupyter notebooks for experiments.
-- `src/`: Source code for the project.
-- `models/`: Trained models.
-- `results/`: Experiment results and visualizations.
-- `references/`: Research papers and external references.
+## Directory Structure
+- **data/**: Contains raw and processed datasets.
+- **scripts/**: Includes data preprocessing, training, and evaluation scripts.
+- **models/**: GNN model and saved weights.
+- **notebooks/**: Jupyter notebooks for exploratory analysis and training.
+- **results/**: Logs, metrics, and figures.
+- **references/**: Research papers and external references.
 
 ## Getting Started
-1. Clone the repository.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AliTurkarslan/Anti-Money-Laundering-AML-Transaction-Level-Models.git
 2. Install the required libraries.
-3. Run the notebooks in the `notebooks/` directory.
+   pip install -r requirements.txt
+4. Run the notebooks in the `notebooks/` directory.
 
 ## License
 This project is licensed under the MIT License.
