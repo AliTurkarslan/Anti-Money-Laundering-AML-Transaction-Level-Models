@@ -1,44 +1,68 @@
 import torch
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import os
+import json
+import matplotlib.pyplot as plt
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, \
+    precision_recall_curve, auc, confusion_matrix
+from scripts.config import RESULTS_DIR, MODEL_TYPE, EPOCHS, LEARNING_RATE, DROPOUT_RATE
 
-def evaluate_model(model, test_loader, device):
-    """
-    Evaluate the trained model using test data.
-    """
+def evaluate_model(model, data, mask, threshold=0.5, mode="test"):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model = model.to(device)
+    data = data.to(device)
+
     model.eval()
-    y_true = []
-    y_pred = []
     with torch.no_grad():
-        for batch in test_loader:
-            batch = batch.to(device)
-            pred = model(batch.x, batch.edge_index, batch.edge_attr)
-            pred = (pred > 0.5).float()
-            y_true.extend(batch.y.cpu().numpy())
-            y_pred.extend(pred.cpu().numpy())
+        out = model(data.x, data.edge_index).squeeze()
 
-    # Compute evaluation metrics
-    accuracy = accuracy_score(y_true, y_pred)
-    precision = precision_score(y_true, y_pred)
-    recall = recall_score(y_true, y_pred)
-    f1 = f1_score(y_true, y_pred)
-    metrics = {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
-    print("Evaluation Metrics:", metrics)
+    pred = (out[mask] > threshold).float()
+    y_true = data.y[mask].cpu().numpy()
+    y_pred = pred.cpu().numpy()
+    y_scores = out[mask].cpu().detach().numpy()
+
+    # Performance Metrics
+    metrics = {
+        "accuracy": accuracy_score(y_true, y_pred),
+        "precision": precision_score(y_true, y_pred, zero_division=1),
+        "recall": recall_score(y_true, y_pred, zero_division=1),
+        "f1": f1_score(y_true, y_pred, zero_division=1),
+        "auc": roc_auc_score(y_true, y_scores) if len(set(y_true)) > 1 else 0.5,
+        "conf_matrix": confusion_matrix(y_true, y_pred),
+    }
+
+    # Precision-Recall AUC
+    precision, recall, _ = precision_recall_curve(y_true, y_scores)
+    metrics["pr_auc"] = auc(recall, precision)
+
+
+    precision_curve, recall_curve, _ = precision_recall_curve(y_true, y_scores)
+    pr_auc = auc(recall_curve, precision_curve)
+    metrics["pr_auc"] = pr_auc
+
+    metrics["y_true"] = y_true  # Eklendi
+    metrics["y_scores"] = y_scores  # Eklendi
+
+    # **Visualization and Saving**
+    filename = f"{MODEL_TYPE}_{mode}_LR_{LEARNING_RATE}_Epochs_{EPOCHS}"
+    plt.figure(figsize=(12, 6))
+    plt.suptitle(f"Model: {MODEL_TYPE}, LR: {LEARNING_RATE}, Epochs: {EPOCHS}, Dropout: {DROPOUT_RATE} - {mode.capitalize()} Results")
+
+    # Precision-Recall Curve
+    plt.subplot(1, 2, 1)
+    plt.plot(recall_curve, precision_curve, label=f"PR Curve (AUC: {pr_auc:.4f})")
+    plt.xlabel("Recall")
+    plt.ylabel("Precision")
+    plt.title(f"{mode.capitalize()} Precision-Recall Curve")
+    plt.legend()
+
+    # AUC Values
+    plt.subplot(1, 2, 2)
+    plt.bar(["AUC", "PR-AUC"], [metrics["auc"], metrics["pr_auc"]], color=['blue', 'orange'])
+    plt.ylabel("Score")
+    plt.title(f"{mode.capitalize()} AUC Scores")
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.savefig(os.path.join(RESULTS_DIR, f"{filename}_results.png"))
+    plt.show()
+
     return metrics
-
-if __name__ == "__main__":
-    from models.gnn_model import GAT
-    from scripts.dataset import create_graph_dataset
-
-    # Load graph dataset
-    graph_data = create_graph_dataset("data/processed/balanced.csv")
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = GAT(in_channels=graph_data.num_features, hidden_channels=16, out_channels=16, heads=8).to(device)
-
-    # Load trained model
-    model.load_state_dict(torch.load("models/trained_model.pth"))
-
-    # Create test loader
-    test_loader = NeighborLoader(graph_data, batch_size=128, input_nodes=graph_data.test_mask)
-
-    # Evaluate model
-    evaluate_model(model, test_loader, device)
