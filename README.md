@@ -124,6 +124,8 @@ BALANCE_METHOD = "upsampling"  # Options:
                                # Use 'smote' or 'adasyn' for non-linear data distributions.
 
 ## Results
+Sample Model:GAT
+Visualizations:
 
   ![GAT_train_LR_0 001_Epochs_20_metrics](https://github.com/user-attachments/assets/12b6f320-579a-4594-8d09-4c6df42ba532)
 
