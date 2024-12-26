@@ -2,11 +2,11 @@ import torch
 
 # Model Settings
 MODEL_TYPE = "GCN"  # Alternatives: "GCN", "GAT", "GraphNN"
-HIDDEN_DIM = 16  # Increased dimensions for more features
+HIDDEN_DIM = 32  # Increased dimensions for more features
 OUTPUT_DIM = 1
-EPOCHS = 5  # Increased number of training epochs
-LEARNING_RATE = 0.005  # More stable learning rate
-DROPOUT_RATE = 0.5  # Added dropout to prevent overfitting
+EPOCHS = 50  # Increased number of training epochs
+LEARNING_RATE = 0.001# More stable learning rate
+DROPOUT_RATE = 0.3  # Added dropout to prevent overfitting
 
 # Data Settings
 DATA_PATH = "data/HI-Small_Trans.csv"
