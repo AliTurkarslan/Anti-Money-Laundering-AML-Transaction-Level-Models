@@ -123,6 +123,12 @@ BALANCE_METHOD = "upsampling"  # Options:
                                # 'adasyn' - Generates synthetic samples with ADASYN algorithm.
                                # Use 'smote' or 'adasyn' for non-linear data distributions.
 
+## Results
+
+  ![GAT_train_LR_0 001_Epochs_20_metrics](https://github.com/user-attachments/assets/12b6f320-579a-4594-8d09-4c6df42ba532)
+
+
+
 ## References
  - `Wei et al. - 2023 - A Dynamic Graph Convolutional Network for Anti-money Laundering
  - `Cheng et al. - 2024 - Graph Neural Networks for Financial Fraud Detection A Review
