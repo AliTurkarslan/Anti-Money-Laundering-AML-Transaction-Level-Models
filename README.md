@@ -18,62 +18,33 @@ This repository supports multiple GNN architectures (**GCN**, **GAT**, and **Gra
 - Jolanta Krastina
 
 ## Directory Structure
-📂 data 
-├── 📄 README.md # Instructions for downloading the dataset 
-├── (data files) # Not included due to size, instructions to download provided
-📂 notebooks 
-├── 📄 Initial_EDA.ipynb # Exploratory Data Analysis
-📂 references 
-├── 📄 Cheng et al., 2024 - Graph Neural Networks for Financial Fraud Detection 
-├── 📄 Ikeda et al., 2020 - Feature Engineering for Fraud Detection 
-├── 📄 Wan and Li, 2024 - Dynamic Graph Models for AML
-📂 results 
-├── 📂 GAT 
-│   ├── 📄 train_confusion_matrix.png 
-│   ├── 📄 train_pr_curve.png 
-│   ├── 📄 test_confusion_matrix.png 
-│   ├── 📄 test_pr_curve.png 
-│   ├── 📄 GCN_train_metrics.png 
-│   ├── 📄 README.md # Model-specific details 
-├── 📂 GCN 
-├── 📂 GraphNN
-📂 scripts 
-├── 📄 config.py # Configuration parameters 
-├── 📄 evaluate.py # Model evaluation and metrics
-├── 📄 model.py # GNN model architectures 
-├── 📄 preprocess.py # Data preprocessing pipeline 
-├── 📄 train.py # Model training script 
-├── 📄 utils.py # Helper functions
-📄 LICENSE.md 
-📄 README.md 
-📄 main.py # Main script to run the project 
-📄 requirements.txt # Dependencies
 
-
-- **data/**
+- **📂data/**
   - `README.md` - Instructions for downloading the dataset
   - *(data files)* - Not included due to size, instructions to download provided
 
-- **notebooks/**
+- **📂notebooks/**
   - `Initial_EDA.ipynb` - Exploratory Data Analysis
 
-- **references/**
+- **📂references/**
   - `Cheng et al., 2024` - Graph Neural Networks for Financial Fraud Detection
   - `Ikeda et al., 2020` - Feature Engineering for Fraud Detection
-  - `Wan and Li, 2024` - Dynamic Graph Models for AML
+  - `...
 
-- **results/**
-  - **GAT/**
+- **📂results/**
+  - **📂GAT/**
     - `train_confusion_matrix.png`
     - `train_pr_curve.png`
     - `test_confusion_matrix.png`
     - `test_pr_curve.png`
     - `GCN_train_metrics.png`
     - `README.md` - Model-specific details
-  - **GCN/**
-  - **GraphNN/**
-
-- **scripts/**
+  - **📂GCN/**
+    - `...`
+  - **📂GraphNN/**
+    - `...`
+   
+- **📂scripts/**
   - `config.py` - Configuration parameters
   - `evaluate.py` - Model evaluation and metrics
   - `model.py` - GNN model architectures
@@ -153,11 +124,11 @@ BALANCE_METHOD = "upsampling"  # Options:
                                # Use 'smote' or 'adasyn' for non-linear data distributions.
 
 ## References
--Wei et al. - 2023 - A Dynamic Graph Convolutional Network for Anti-money Laundering
--Cheng et al. - 2024 - Graph Neural Networks for Financial Fraud Detection A Review
--Johannessen and Jullum - 2023 - Finding Money Launderers Using Heterogeneous Graph Neural Networks
--Wan and Li - 2024 - A Novel Money Laundering Prediction Model Based on a Dynamic Graph Convolutional Neural Network and
--Ikeda et al. - 2020 - A New Framework of Feature Engineering for Machine Learning in Financial Fraud Detection
+ - `Wei et al. - 2023 - A Dynamic Graph Convolutional Network for Anti-money Laundering
+ - `Cheng et al. - 2024 - Graph Neural Networks for Financial Fraud Detection A Review
+ - `Johannessen and Jullum - 2023 - Finding Money Launderers Using Heterogeneous Graph Neural Networks
+ - `Wan and Li - 2024 - A Novel Money Laundering Prediction Model Based on a Dynamic Graph Convolutional Neural Network and
+ - `Ikeda et al. - 2020 - A New Framework of Feature Engineering for Machine Learning in Financial Fraud Detection
 
 ## License
 This project is licensed under the MIT License.
