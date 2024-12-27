@@ -1,21 +1,32 @@
-# AMLwtGNN: Anti-Money Laundering with Graph Neural Networks
+# AMLwtGNN: Anti-Money Laundering Detection with Graph Neural Networks
 
 ## Overview
 
-This project implements **Graph Neural Networks (GNNs)** to detect suspicious financial transactions potentially related to **money laundering**. It processes transactional data, applies graph-based modeling, and uses advanced **machine learning techniques** to identify illicit patterns. This project focuses on developing transaction-level models for anti-money laundering (AML) in collaboration with Dmitry Pavlyuk, Igor Rodin, and Deloitte, Latvia.
+This project focuses on **Money Laundering Detection** using **Graph Neural Networks (GNNs)**. The aim is to identify suspicious financial transactions potentially related to money laundering it specifically targets the detection of suspicious transactions at the **layering stage** of money laundering activities. It processes transactional data, applies graph-based modeling, and uses advanced **machine learning techniques** to detect illicit patterns in collaboration with Dmitry Pavlyuk, Igor Rodin, and Deloitte, Latvia.  
 
 This repository supports multiple GNN architectures (**GCN**, **GAT**, and **GraphNN**) and handles imbalanced datasets with techniques like **SMOTE**, **ADASYN**, and **upsampling**. Detailed performance metrics and visualizations are provided to analyze the results.
 
 ## Objectives
-- To analyze and model the layering stage of money laundering.
-- To apply machine learning techniques to detect suspicious activities.
+- To detect suspicious transactions potentially related to **money laundering** activities using Graph Neural Networks (GNNs).  
+- To analyze and model the **layering stage** of money laundering to identify anomalies and patterns.  
+- To evaluate machine learning techniques for improving detection accuracy and scalability.  
 
 ## Team Members
-- Dmitry Pavlyuk
-- Igor Rodin
-- Ali Turkarslan
-- Niedre Vija
-- Jolanta Krastina
+- Niedre Vija (Project Manager)
+- Jolanta Krastina (Data Scientist)
+- Ali Turkarslan (Data Engineer)
+- Dmitry Pavlyuk (Academic Advisor - Transport and Telecommunication Institute)
+- Igor Rodin (Industry Advisor - Deloitte Latvia)
+
+## **Table of Contents**
+
+| **Content**              | **Description**                                                                                       | **Link**                                                                                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GitHub Repository**    | Code, scripts, and other files for model development, evaluation, and environment setup.              | [GitHub Repository](https://github.com/AliTurkarslan/Anti-Money-Laundering-AML-Transaction-Level-Models/tree/main)                                   |
+| **Project Management**   | Project tracking with Kanban board.                                                                   | [Kanban Board](https://github.com/users/AliTurkarslan/projects/4)                                                                                    |
+| **Meeting Minutes**      | Communication strategy description and meeting minutes.                                               | [Meeting Minutes](https://studentstsi-my.sharepoint.com/:f:/g/personal/st83072_students_tsi_lv/El7zoe8AJ7dPp8Kw7vcIi8gB_vv52ZQMQplCtwQ7h6ZXTQ?e=N5jxsf) |
+
+
 
 ## Directory Structure
 
@@ -57,6 +68,23 @@ This repository supports multiple GNN architectures (**GCN**, **GAT**, and **Gra
 - `main.py` - Main script to run the project
 - `requirements.txt` - Dependencies
 
+
+## **Contribution of Team Members**
+
+| **Category**              | **Member**                     | **Contribution**                                                                                                                                            |
+|---------------------------|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Data Preparation**       | **Jolanta Krastiņa (70%)**     | Led data exploration and selection, and discussions on dataset challenges, including handling imbalanced data and addressing time sensitivity in data splitting. |
+|                           | **Ali Turkasan (30%)**         | Assisted with data exploration and selection, and ensured the dataset was properly formatted for further training and testing.                              |
+| **Model Development**      | **Jolanta Krastiņa (30%)**     | Contributed to the initial implementation of the GNN model, and participated in discussions on key challenges, solutions, and configuration metrics.         |
+|                           | **Ali Turkasan (70%)**         | Led the development of GNN models, including fine-tuning, optimization, and experimentation with different configurations.                                   |
+| **Model Evaluation**       | **Jolanta Krastiņa (20%)**     | Contributed to the creation of evaluation metrics and the analysis of results.                                                                               |
+|                           | **Ali Turkasan (80%)**         | Led the evaluation process, including generating performance plots, interpreting results, and conducting model comparisons.                                  |
+| **Documentation**          | **Team (100%)**                | Documented technical aspects of the codebase, environment setup, implementation details, execution steps, and user instructions.                             |
+| **Project Management**     | **Vija Niedre (100%)**         | Led project management, including planning, team coordination, and ensuring milestones were met.                                                              |
+
+
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -84,6 +112,8 @@ This repository supports multiple GNN architectures (**GCN**, **GAT**, and **Gra
 
   
 ## Dataset
+The dataset used in this project focuses on transactional data designed to simulate patterns indicative of **money laundering**.  
+This dataset does not represent actual financial data but serves as a synthetic approximation for research purposes.
 **Not Included**: The dataset is too large to be included in this repository.  
 **Download Instructions**: See `data/README.md` for detailed download instructions.
 
@@ -91,10 +121,11 @@ This repository supports multiple GNN architectures (**GCN**, **GAT**, and **Gra
 Modify settings in **scripts/config.py** for customization.
 
 ### Model Settings
-MODEL_TYPE = "GAT"  # Options: "GCN" (Graph Convolutional Network), 
-                    # "GAT" (Graph Attention Network), 
-                    # "GraphNN" (General Graph Neural Network)
-                    # Determines the type of model architecture used for training.
+MODEL_TYPE = "GAT" # Options:  
+                              # "GCN" (Graph Convolutional Network) - Focuses on general graph structures.  
+                              # "GAT" (Graph Attention Network) - Adds attention mechanisms for improved feature learning.  
+                              # "GraphNN" (General Graph Neural Network) - Suitable for more flexible node relationships.  
+                              # These models are designed to **detect patterns and anomalies** in transaction data and are not intended for building full AML compliance systems.  
 
 HIDDEN_DIM = 32     # Number of hidden units in each layer.
                     # Higher values may improve performance but increase computational cost.
