@@ -1,4 +1,4 @@
-# Anti-Money Laundering Detection with Transaction-Level Models using Graph Neural Networks
+# Money Laundering Detection with Transaction-Level Models using Graph Neural Networks
 
 ## Overview
 
