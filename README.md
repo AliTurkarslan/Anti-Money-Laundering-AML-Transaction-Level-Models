@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project focuses on **Money Laundering Detection** using **Graph Neural Networks (GNNs)**. The aim is to identify suspicious financial transactions potentially related to money laundering it specifically targets the detection of suspicious transactions at the **layering stage** of money laundering activities. It processes transactional data, applies graph-based modeling, and uses advanced **machine learning techniques** to detect illicit patterns in collaboration with Dmitry Pavlyuk, Igor Rodin, and Deloitte, Latvia.  
+This project focuses on **Money Laundering Detection** using **Graph Neural Networks (GNNs)**. The aim is to identify suspicious financial transactions potentially related to money laundering it specifically targets the detection of suspicious transactions at the **layering stage** of money laundering activities. The project processes transactional data, applies graph-based modeling, and leverages advanced  **machine learning techniques** to identify suspicious patterns. This work is conducted in collaboration with Dmitry Pavlyuk (Academic Advisor - Transport and Telecommunication Institute), Igor Rodin(Academic Advisor - Transport and Telecommunication Institute), and Deloitte, Latvia.  
 
 This repository supports multiple GNN architectures (**GCN**, **GAT**, and **GraphNN**) and handles imbalanced datasets with techniques like **SMOTE**, **ADASYN**, and **upsampling**. Detailed performance metrics and visualizations are provided to analyze the results.
 
