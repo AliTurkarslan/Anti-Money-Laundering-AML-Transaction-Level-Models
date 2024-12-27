@@ -132,11 +132,10 @@ Visualizations:
 
 ## Hyperparameter Optimization (Optional)
 This repository includes an example script (`optuna_tuning.py`) for hyperparameter optimization using Optuna.
-
-### Key Features
+#### Key Features
 Supports tuning for model type, hidden dimensions, learning rate, and dropout rate.
 Designed to maximize AUC scores by testing multiple configurations.
-### Note
+#### Note
 Due to hardware limitations, this script has not been tested on large datasets but is included as a starting point for further development in GPU-supported environments.
 
 
