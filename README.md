@@ -130,6 +130,15 @@ Visualizations:
   ![GAT_train_LR_0 001_Epochs_20_metrics](https://github.com/user-attachments/assets/12b6f320-579a-4594-8d09-4c6df42ba532)
 
 
+## Hyperparameter Optimization (Optional)
+This repository includes an example script (`optuna_tuning.py`) for hyperparameter optimization using Optuna.
+
+### Key Features
+Supports tuning for model type, hidden dimensions, learning rate, and dropout rate.
+Designed to maximize AUC scores by testing multiple configurations.
+### Note
+Due to hardware limitations, this script has not been tested on large datasets but is included as a starting point for further development in GPU-supported environments.
+
 
 ## References
  - `Wei et al. - 2023 - A Dynamic Graph Convolutional Network for Anti-money Laundering
