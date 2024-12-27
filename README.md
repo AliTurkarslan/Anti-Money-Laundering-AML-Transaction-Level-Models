@@ -171,11 +171,14 @@ Due to hardware limitations, this script has not been tested on large datasets b
 
 
 ## References
- - `Wei et al. - 2023 - A Dynamic Graph Convolutional Network for Anti-money Laundering
- - `Cheng et al. - 2024 - Graph Neural Networks for Financial Fraud Detection A Review
- - `Johannessen and Jullum - 2023 - Finding Money Launderers Using Heterogeneous Graph Neural Networks
- - `Wan and Li - 2024 - A Novel Money Laundering Prediction Model Based on a Dynamic Graph Convolutional Neural Network and
- - `Ikeda et al. - 2020 - A New Framework of Feature Engineering for Machine Learning in Financial Fraud Detection
+
+ - Cheng, D. et al. (2024) ‘Graph Neural Networks for Financial Fraud Detection: A Review’. Available at: https://doi.org/10.1007/s11704-024-40474-y.
+ - Ding, Z. et al. (2023) Effective Multi-Graph Neural Networks for Illicit Account Detection on Cryptocurrency Transaction Networks. Available at: https://doi.org/10.48550/arXiv.2309.02460.
+ - Ikeda, C., Ouazzane, K. and Yu, Q. (2020) ‘A New Framework of Feature Engineering for Machine Learning in Financial Fraud Detection’, in Computer Science & Information Technology (CS & IT). 10th International Conference on Advances in Computing and Information Technology (ACITY 2020), AIRCC Publishing Corporation, pp. 205–220. Available at: https://doi.org/10.5121/csit.2020.101517.
+ - Johannessen, F. and Jullum, M. (2023) ‘Finding Money Launderers Using Heterogeneous Graph Neural Networks’. arXiv. Available at: https://doi.org/10.48550/arXiv.2307.13499.
+ - Wan, F. and Li, P. (2024) ‘A Novel Money Laundering Prediction Model Based on a Dynamic Graph Convolutional Neural Network and Long Short-Term Memory’, Symmetry, 16(3), p. 378. Available at: https://doi.org/10.3390/sym16030378.
+ - Wei, T. et al. (2023) ‘A Dynamic Graph Convolutional Network for Anti-money Laundering’, in D.-S. Huang et al. (eds) Advanced Intelligent Computing Technology and Applications. Singapore: Springer Nature, pp. 493–502. Available at: https://doi.org/10.1007/978-981-99-4761-4_42.
+
 
 ## License
 This project is licensed under the MIT License.
