@@ -1,4 +1,4 @@
-# AMLwtGNN: Anti-Money Laundering Detection with Graph Neural Networks
+# Anti-Money Laundering Detection with Transaction-Level Models using Graph Neural Networks
 
 ## Overview
 
